@@ -24,7 +24,7 @@ namespace Lab3_Var1
             this.name = input_name;
             this.last_name = input_last_name;
             this.birth_date = input_birth_date;
-            Console.WriteLine("Created new Person with given parameters.");
+            //Console.WriteLine("Created new Person with given parameters.");
         }
 
         public string Name
