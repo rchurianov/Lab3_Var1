@@ -5,25 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab2_Var1
+namespace Lab3_Var1
 {
     public class Student : Person, IDateAndCopy, IEnumerable
     {
         private Education degree;
         private int group_number;
-        private ArrayList credit_list;
-        private ArrayList exam_list;
+        private List<Credit> credit_list;
+        private List<Exam> exam_list;
 
         public Student(Person p, Education e, int i) : base(p.Name, p.Last_Name, p.Birth_Date)
         {
             degree = e;
             group_number = i;
 
-            credit_list = new ArrayList();
+            credit_list = new List<Credit>();
             credit_list.Add(new Credit("Analysis", true));
             credit_list.Add(new Credit("Differential equations", true));
 
-            exam_list = new ArrayList();
+            exam_list = new List<Exam>();
             exam_list.Add(new Exam("History", 5, new DateTime(2000, 10, 10)));
             exam_list.Add(new Exam("Operation Systems", 5, new DateTime(2000, 20, 20)));
         }
@@ -36,11 +36,11 @@ namespace Lab2_Var1
             //group_number = rand.Next(101, 121);
             group_number = 111;
 
-            credit_list = new ArrayList();
+            credit_list = new List<Credit>();
             credit_list.Add(new Credit());
             credit_list.Add(new Credit());
 
-            exam_list = new ArrayList();
+            exam_list = new List<Exam>();
             exam_list.Add(new Exam());
             exam_list.Add(new Exam());
             //Console.WriteLine("Created new Student with default constructor.");
@@ -96,13 +96,13 @@ namespace Lab2_Var1
             }
         }
 
-        public ArrayList Exam_List
+        public List<Exam> Exam_List
         {
             get { return exam_list; }
             set { exam_list = value; }
         }
 
-        public ArrayList Credit_List
+        public List<Credit> Credit_List
         {
             get { return credit_list; }
             set { credit_list = value; }
@@ -136,7 +136,7 @@ namespace Lab2_Var1
             {
                 if (exam_list == null)
                 {
-                    exam_list = new ArrayList();
+                    exam_list = new List<Exam>();
                     for (int i = 0; i < input_exam_list.Length; i++)
                     {
                         exam_list.Add(input_exam_list[i]);
@@ -182,6 +182,7 @@ namespace Lab2_Var1
         /* Iterates through passed Credits which have corresponding
          * Exam passed with grade > 2
          */
+        /*
         public IEnumerable<Credit> Passed_Credit_Iterator()
         {
             IComparer comparer = new Credit_Exam_Comparer();
@@ -204,7 +205,7 @@ namespace Lab2_Var1
                 }
             }
         }
-
+        */
         /* A simple iterator to iterate through both
          * credit and exam collections
          */
@@ -304,13 +305,13 @@ namespace Lab2_Var1
             student_copy.degree = this.degree;
             student_copy.group_number = this.group_number;
             // student_copy.credit_list = this.credit_list;
-            student_copy.credit_list = new ArrayList();
+            student_copy.credit_list = new List<Credit>();
             for (int i = 0; i < this.credit_list.Count; i++)
             {
                 student_copy.credit_list.Add(((Credit)this.credit_list[i]).DeepCopy());
             }
             // student_copy.exam_list = this.exam_list;
-            student_copy.exam_list = new ArrayList();
+            student_copy.exam_list = new List<Exam>();
             for (int i = 0; i < this.exam_list.Count; i++)
             {
                 student_copy.exam_list.Add(((Exam)this.exam_list[i]).DeepCopy());
@@ -458,6 +459,7 @@ namespace Lab2_Var1
                 IComparer comparer = new Credit_Exam_Comparer();
                 input_s.exam_list.Sort();
                 credit_intersect_exam = new ArrayList();
+                /*
                 for (int i = 0; i < input_s.credit_list.Count; i++ )
                 {
                     //Console.WriteLine("In the loop.");
@@ -469,6 +471,7 @@ namespace Lab2_Var1
                         //Console.WriteLine("Added Credit to StudentEnumerator.");
                     }
                 }
+                 * */
                 this.current = -1;
             }
 

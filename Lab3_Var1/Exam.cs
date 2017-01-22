@@ -104,7 +104,7 @@ namespace Lab3_Var1
             }
         }
 
-        public object DeepCopy()
+        public Exam DeepCopy()
         {
             Exam exam_copy = new Exam();
             exam_copy.Exam_Name = this.Exam_Name;

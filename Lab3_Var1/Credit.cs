@@ -50,7 +50,7 @@ namespace Lab3_Var1
             }
         }
 
-        public object DeepCopy()
+        public Credit DeepCopy()
         {
             Credit credit_copy = new Credit();
             credit_copy.Credit_Name = this.Credit_Name;
