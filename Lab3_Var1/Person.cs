@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3_Var1
 {
-    public class Person : IDateAndCopy
+    public class Person : IDateAndCopy, IComparable, IComparer<Person>
     {
         protected string name;
         protected string last_name;
@@ -169,6 +169,36 @@ namespace Lab3_Var1
                 return new DateTime();
             }
             set { }
+        }
+
+
+        /* Implementation of IComparable interface.
+         * CompareTo(object obj) compares two Person objects based
+         * on their last names.
+         */
+        int IComparable.CompareTo(object obj)
+        {
+            if (obj == null)
+                return -1;
+
+            Person another_person = (Person)obj;
+            if (another_person == null)
+                return -1;
+
+            return this.last_name.CompareTo(another_person.last_name);
+        }
+
+
+        /* Implementation of IComparer<Person> interface.
+         * Compare(Person x, Person y) compares two Person objects
+         * based on their birth dates.
+         */
+        int IComparer<Person>.Compare(Person x, Person y)
+        {
+            if (x == null || y == null)
+                return -1;
+
+            return x.Birth_Date.CompareTo(y.Birth_Date);
         }
     }
 }
