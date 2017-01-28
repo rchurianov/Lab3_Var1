@@ -60,8 +60,6 @@ namespace Lab3_Var1
             }
         }
 
-
-
         public Person Passport_Data
         { 
             get 
@@ -122,7 +120,7 @@ namespace Lab3_Var1
                 {
                     for (int i = 0; i < exam_list.Count; i++)
                     {
-                        average = average + ((Exam)exam_list[i]).Grade;
+                        average = average + exam_list[i].Grade;
                     }
                     average /= exam_list.Count;
                 }
