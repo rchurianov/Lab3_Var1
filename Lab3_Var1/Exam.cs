@@ -136,7 +136,7 @@ namespace Lab3_Var1
          */
         public int CompareTo(object obj)
         {
-            if (obj == null) return -1;
+            if (obj == null) return 1;
 
             Exam another_exam = obj as Exam;
             if (another_exam != null)

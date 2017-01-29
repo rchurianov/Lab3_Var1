@@ -32,7 +32,7 @@ namespace Lab3_Var1
  	         return base.ToString();
         }
 
-        public override string ToString()
+        public string ToShortString()
         {
             return base.ToString();
         }

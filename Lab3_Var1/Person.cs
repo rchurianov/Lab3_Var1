@@ -179,13 +179,13 @@ namespace Lab3_Var1
         int IComparable.CompareTo(object obj)
         {
             if (obj == null)
-                return -1;
+                return 1;
 
             Person another_person = (Person)obj;
-            if (another_person == null)
-                return -1;
-
-            return this.last_name.CompareTo(another_person.last_name);
+            if (another_person != null)
+                return this.last_name.CompareTo(another_person.last_name);
+            else
+                throw new ArgumentException("Passed object in not a Person.");
         }
 
 
@@ -195,9 +195,6 @@ namespace Lab3_Var1
          */
         int IComparer<Person>.Compare(Person x, Person y)
         {
-            if (x == null || y == null)
-                return -1;
-
             return x.Birth_Date.CompareTo(y.Birth_Date);
         }
     }
