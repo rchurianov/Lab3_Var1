@@ -153,7 +153,7 @@ namespace Lab3_Var1
 
 
         /* A simple iterator to iterate through both
-         * Credits and Exams in lists. Both credits and exams should be
+         * Credits and Exams in lists consequtively. Both credits and exams should be
          * passed. For Credit "passed" means Credit.Passed == true;
          * for exam "passed" means Exam.Grade > 2.
          */
@@ -163,7 +163,7 @@ namespace Lab3_Var1
             {
                 for (int i = 0; i < credit_list.Count; i++)
                 {
-                    if (((Credit)credit_list[i]).Credit_Passed)
+                    if (credit_list[i].Credit_Passed)
                         yield return credit_list[i];
                 }
             }
@@ -171,7 +171,7 @@ namespace Lab3_Var1
             {
                 for (int i = 0; i < exam_list.Count; i++)
                 {
-                    if (((Exam)exam_list[i]).Grade > 2)
+                    if (exam_list[i].Grade > 2)
                         yield return exam_list[i];
                 }
             }
@@ -180,7 +180,6 @@ namespace Lab3_Var1
         /* Iterates through passed Credits which have corresponding
          * Exam passed with grade > 2
          */
-        /*
         public IEnumerable<Credit> Passed_Credit_Iterator()
         {
             IComparer comparer = new Credit_Exam_Comparer();
@@ -190,22 +189,23 @@ namespace Lab3_Var1
             {
                 for (int i = 0; i < credit_list.Count; i++)
                 {
-                    int found_exam_index = exam_list.BinarySearch((Credit)credit_list[i], comparer);
-                    if (found_exam_index > 0)
+                    int found_exam_index = exam_list.FindIndex(x => x.Exam_Name == credit_list[i].Credit_Name); // new version
+                    //int found_exam_index = exam_list.BinarySearch((Credit)credit_list[i], comparer); <- old version
+                    if (found_exam_index != -1)
                     {
-                        Exam found_exam = (Exam)exam_list[found_exam_index];
-                        if (((Credit)credit_list[i]).Credit_Passed &&
-                            found_exam.Grade > 2)
+                        Exam found_exam = exam_list[found_exam_index];
+                        if (credit_list[i].Credit_Passed && found_exam.Grade > 2)
                         {
-                            yield return (Credit)credit_list[i];
+                            yield return credit_list[i];
                         }
                     }
                 }
             }
         }
-        */
+        
+
         /* A simple iterator to iterate through both
-         * credit and exam collections
+         * credit and exam collections consequtively
          */
         public IEnumerable Session_Iterator()
         {
@@ -237,9 +237,9 @@ namespace Lab3_Var1
             {
                 for (int i = 0; i < exam_list.Count; i++)
                 {
-                    if (((Exam)exam_list[i]).Grade > min_grade)
+                    if (exam_list[i].Grade > min_grade)
                     {
-                        yield return (Exam)exam_list[i];
+                        yield return exam_list[i];
                     }
                 }
             }
@@ -302,17 +302,17 @@ namespace Lab3_Var1
             student_copy.birth_date = this.birth_date;
             student_copy.degree = this.degree;
             student_copy.group_number = this.group_number;
-            // student_copy.credit_list = this.credit_list;
+            
             student_copy.credit_list = new List<Credit>();
             for (int i = 0; i < this.credit_list.Count; i++)
             {
-                student_copy.credit_list.Add(((Credit)this.credit_list[i]).DeepCopy());
+                student_copy.credit_list.Add(this.credit_list[i].DeepCopy());
             }
-            // student_copy.exam_list = this.exam_list;
+            
             student_copy.exam_list = new List<Exam>();
             for (int i = 0; i < this.exam_list.Count; i++)
             {
-                student_copy.exam_list.Add(((Exam)this.exam_list[i]).DeepCopy());
+                student_copy.exam_list.Add(this.exam_list[i].DeepCopy());
             }
             return student_copy;
         }
