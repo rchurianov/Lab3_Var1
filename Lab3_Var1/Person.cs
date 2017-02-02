@@ -171,7 +171,6 @@ namespace Lab3_Var1
             set { }
         }
 
-
         /* Implementation of IComparable interface.
          * CompareTo(object obj) compares two Person objects based
          * on their last names.
