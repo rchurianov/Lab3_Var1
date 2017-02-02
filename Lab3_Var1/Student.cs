@@ -14,10 +14,10 @@ namespace Lab3_Var1
         private List<Credit> credit_list;
         private List<Exam> exam_list;
 
-        public Student(Person p, Education e, int i) : base(p.Name, p.Last_Name, p.Birth_Date)
+        public Student(Person p, Education e, int input_group_number) : base(p.Name, p.Last_Name, p.Birth_Date)
         {
             degree = e;
-            group_number = i;
+            group_number = input_group_number;
 
             credit_list = new List<Credit>();
             credit_list.Add(new Credit("Analysis", true));
@@ -25,7 +25,7 @@ namespace Lab3_Var1
 
             exam_list = new List<Exam>();
             exam_list.Add(new Exam("History", 5, new DateTime(2000, 10, 10)));
-            exam_list.Add(new Exam("Operation Systems", 5, new DateTime(2000, 20, 20)));
+            exam_list.Add(new Exam("Operation Systems", 5, new DateTime(2000, 10, 20)));
         }
 
         public Student() : base()
@@ -151,7 +151,6 @@ namespace Lab3_Var1
             }
         }
 
-
         /* A simple iterator to iterate through both
          * Credits and Exams in lists consequtively. Both credits and exams should be
          * passed. For Credit "passed" means Credit.Passed == true;
@@ -203,7 +202,6 @@ namespace Lab3_Var1
             }
         }
         
-
         /* A simple iterator to iterate through both
          * credit and exam collections consequtively
          */
@@ -224,7 +222,6 @@ namespace Lab3_Var1
                 }
             }
         }
-
 
         /* Iterator to iterate through exam_list.
          * Return Exams from the list one by one, but only those
@@ -528,7 +525,6 @@ namespace Lab3_Var1
              */
         private class Credit_Exam_Comparer : IComparer
         {
-
             int IComparer.Compare(object x, object y)
             {
                 //return String.Compare(((Exam)x).Exam_Name, ((Credit)y).Credit_Name);
@@ -537,6 +533,14 @@ namespace Lab3_Var1
 
                 string e_name = ((Exam)x).Exam_Name;
                 return e_name.CompareTo(((Credit)y).Credit_Name);
+            }
+        }
+
+        private class StudentAGPComparer : IComparer<Student>
+        {
+            int IComparer<Student>.Compare(Student x, Student y)
+            {
+                return (x.AGP).CompareTo(y.AGP);
             }
         }
 
