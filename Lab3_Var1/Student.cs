@@ -536,7 +536,7 @@ namespace Lab3_Var1
             }
         }
 
-        private class StudentAGPComparer : IComparer<Student>
+        public class StudentAGPComparer : IComparer<Student>
         {
             int IComparer<Student>.Compare(Student x, Student y)
             {

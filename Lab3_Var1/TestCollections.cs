@@ -8,14 +8,19 @@ namespace Lab3_Var1
 {
     class TestCollections
     {
-        //List<TKey>;
-        //List<string>;
-        //Dictionary<TKey, TValue>;
-        //Dictionary<string, TValue>;
+        private List<Person> person_list;
+        //private List<string> person_string_list;
+        private Dictionary<Person, Student> person_student_dict;
+        private Dictionary<string, Student> student_dict;
 
-        public TestCollections()
+        public TestCollections(int collection_length)
         {
 
         }
+
+        //public static Student MakeStudent(int number)
+        //{
+
+        //}
     }
 }
