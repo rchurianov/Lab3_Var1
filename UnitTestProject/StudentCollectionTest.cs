@@ -130,5 +130,63 @@ namespace UnitTestProject
                 Console.WriteLine("Test List contains no Students.");
             }
         }
+
+        [TestMethod]
+        public void Test_MaxAGP()
+        {
+            StudentCollection sc = new StudentCollection();
+            Student[] st_add = new Student[5];
+            //Random rand = new Random();
+
+            for (int i = 0; i < 5; i++)
+            {
+                //int grade = rand.Next(1, 6); // 1 is inclusive, 6 is exclusive - grade [1,5]
+                Student tmp_student = new Student(new Person("John " + i, "Smith " + i, new DateTime()), Education.Bachelor, 121);
+                tmp_student.AddExams(new Exam("Some Exam", i, new DateTime()));
+                st_add[i] = tmp_student;
+                //st_add[i] = new Student(new Person("John", "Smith", new DateTime()), Education.Bachelor, 112);
+            }
+
+            sc.AddStudents(st_add);
+
+            double test_max_agp = (5.0 + 5.0 + 4.0) / 3.0;
+
+            Console.WriteLine(sc.ToShortString());
+            Console.WriteLine(sc.MaxAGP);
+
+            Assert.AreEqual(test_max_agp, sc.MaxAGP);
+        }
+
+        [TestMethod]
+        public void Test_Specialists()
+        {
+            StudentCollection sc = new StudentCollection();
+            Student[] st_add = new Student[5];
+            //Random rand = new Random();
+            Student tmp_student = new Student(new Person("John 0", "Smith 0", new DateTime()), Education.Bachelor, 121);
+            st_add[0] = tmp_student;
+
+            Student tmp_student1 = new Student(new Person("John 1", "Smith 1", new DateTime()), Education.Specialist, 121);
+            st_add[1] = tmp_student1;
+
+            Student tmp_student2 = new Student(new Person("John 2", "Smith 2", new DateTime()), Education.Specialist, 121);
+            st_add[2] = tmp_student2;
+
+            Student tmp_student3 = new Student(new Person("John 3", "Smith 3", new DateTime()), Education.Bachelor, 121);
+            st_add[3] = tmp_student3;
+
+            Student tmp_student4 = new Student(new Person("John 4", "Smith 4", new DateTime()), Education.Bachelor, 121);
+            st_add[4] = tmp_student4;
+
+            sc.AddStudents(st_add);
+
+            Console.WriteLine(sc.ToShortString());
+
+            IEnumerable<Student> test_list = sc.Specialists;
+            foreach (var item in test_list)
+            {
+                Console.WriteLine(item.ToShortString());
+            }
+        }
     }
 }
