@@ -9,18 +9,115 @@ namespace Lab3_Var1
     class TestCollections
     {
         private List<Person> person_list;
-        //private List<string> person_string_list;
+        private List<string> list_of_strings;
         private Dictionary<Person, Student> person_student_dict;
         private Dictionary<string, Student> student_dict;
 
-        public TestCollections(int collection_length)
+        /* Constuctor to create collections with specified number of items */
+        public TestCollections(int length)
         {
+            person_list = new List<Person>();
+            list_of_strings = new List<string>();
+            person_student_dict = new Dictionary<Person, Student>();
+            student_dict = new Dictionary<string, Student>();
 
+            for (int i = 0; i < length; i++ )
+            {
+                Person tmp_person_1 = new Person("Doug " + i, "Spaulding " + i, new DateTime((long)i));
+                Person tmp_person_2 = new Person("Doug " + i, "Spaulding " + i, new DateTime((long)i));
+                Student tmp_student_1 = new Student(tmp_person_1, Education.Bachelor, 333);
+                Student tmp_student_2 = new Student(tmp_person_2, Education.Bachelor, 333);
+
+                /* adding equal but different objects to different collections */
+                person_list.Add(tmp_person_1);
+                list_of_strings.Add(tmp_person_1.ToString());
+                person_student_dict.Add(tmp_person_2, tmp_student_2);
+                student_dict.Add(tmp_person_1.ToString(), tmp_student_1);
+            }
         }
 
-        //public static Student MakeStudent(int number)
-        //{
+        /* Static method that returns a Student object (reference?)
+         * and is used to populate collections.
+         */
+        public static Student MakeStudent(int number)
+        {
+            return new Student(new Person("Doug " + number, "Spaulding " + number, new DateTime((long)number)), Education.Bachelor, 333);
+        }
 
-        //}
+        /* Method to get search times for collections.
+         * Method returns an array of integers. Each element in the array is
+         * search time in ticks for a specific element in one of collections.
+         * [output_array_index] - description
+         * [0] - search time for the first element in List<Person>
+         * [1] - search time for the central element in List<Person>
+         * [2] - search time for the last element in List<Person>
+         * [3] - search time for a non-existent element in List<Person>
+         * [4] - search time for the first element in List<string>
+         * [5] - search time for the central element in List<string>
+         * [6] - search time for the last element in List<string>
+         * [7] - search time for the non-existent element in List<string>
+         * [8] - search time by key for the first element in Dictionary<Person, Student>
+         * [9] - search time by key for the central element in Dictionary<Person, Student>
+         * [10] - search time by key for the last element in Dictionary<Person, Student>
+         * [11] - search time by key for a non-existent element in Dictionary<Person, Student>
+         * [12] - search time by key for the first element in Dictionary<string, Student>
+         * [13] - search time by key for the central element in Dictionary<string, Student>
+         * [14] - search time by key for the last element in Dictionary<string, Student>
+         * [15] - search time by key for a non-existent element in Dictionary<string, Student>
+         * [16] - search time by value for the first element in Dictionary<Person, Student>
+         * [17] - search time by value for the central element in Dictionary<Person, Student>
+         * [18] - search time by value for the last element in Dictionary<Person, Student>
+         * [19] - search time by value for a non-existent element in Dictionary<Person, Student>
+         */
+        public int[] TimeComparison()
+        {
+            int[] results = new int[20];
+
+            /* Searching for the first element in List<Person> person_list.
+             * Measuring search time. */
+            Person person_to_look_for = new Person("Doug " + 0, "Spaulding " + 0, new DateTime((long)0));
+            int start_time = Environment.TickCount;
+            bool b = this.person_list.Contains(person_to_look_for);
+            results[0] = Environment.TickCount - start_time;
+            if (!b)
+                Console.WriteLine("Could not find first element in person_list.");
+            
+            /* Searching for the central element in List<Person> person_list.
+             * Measuring search time. */
+            person_to_look_for.Name = "Doug" + person_list.Count / 2;
+            person_to_look_for.Last_Name = "Spaulding" + person_list.Count / 2;
+            person_to_look_for.Birth_Date = new DateTime((long)(person_list.Count / 2));
+            start_time = Environment.TickCount;
+            bool b = this.person_list.Contais(person_to_look_for);
+            results[1] = Environment.TickCount - start_time;
+            if (!b)
+                Console.WriteLine("Could not find central element in person_list.");
+
+            /* Searching for the last element in List<Person> collection.
+             * Measuring search time.
+             */
+            person_to_look_for.Name = "Doug" + (person_list.Count - 1);
+            person_to_look_for.Last_Name = "Spaulding" + (person_list.Count - 1);
+            person_to_look_for.Birth_Date = new DateTime((long)(person_list.Count - 1));
+            start_time = Environment.TickCount;
+            bool b = this.person_list.Contais(person_to_look_for);
+            results[2] = Environment.TickCount - start_time;
+            if (!b)
+                Console.WriteLine("Could not find last element in person_list.");
+
+            /* Searching for a nonexistent element in List<Person> collection.
+             * Measuring search time.
+             */
+            person_to_look_for.Name = "Doug" + (person_list.Count + 100);
+            person_to_look_for.Last_Name = "Spaulding" + (person_list.Count + 100);
+            person_to_look_for.Birth_Date = new DateTime((long)(person_list.Count + 100));
+            start_time = Environment.TickCount;
+            bool b = this.person_list.Contais(person_to_look_for);
+            results[3] = Environment.TickCount - start_time;
+            if (b)
+                Console.WriteLine("Found a non-existent element. Error.");
+
+            return results;
+        }
     }
 }
