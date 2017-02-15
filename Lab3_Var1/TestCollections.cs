@@ -88,7 +88,7 @@ namespace Lab3_Var1
             person_to_look_for.Last_Name = "Spaulding" + person_list.Count / 2;
             person_to_look_for.Birth_Date = new DateTime((long)(person_list.Count / 2));
             start_time = Environment.TickCount;
-            bool b = this.person_list.Contais(person_to_look_for);
+            b = this.person_list.Contains(person_to_look_for);
             results[1] = Environment.TickCount - start_time;
             if (!b)
                 Console.WriteLine("Could not find central element in person_list.");
@@ -100,7 +100,7 @@ namespace Lab3_Var1
             person_to_look_for.Last_Name = "Spaulding" + (person_list.Count - 1);
             person_to_look_for.Birth_Date = new DateTime((long)(person_list.Count - 1));
             start_time = Environment.TickCount;
-            bool b = this.person_list.Contais(person_to_look_for);
+            b = this.person_list.Contains(person_to_look_for);
             results[2] = Environment.TickCount - start_time;
             if (!b)
                 Console.WriteLine("Could not find last element in person_list.");
@@ -112,10 +112,74 @@ namespace Lab3_Var1
             person_to_look_for.Last_Name = "Spaulding" + (person_list.Count + 100);
             person_to_look_for.Birth_Date = new DateTime((long)(person_list.Count + 100));
             start_time = Environment.TickCount;
-            bool b = this.person_list.Contais(person_to_look_for);
+            b = this.person_list.Contains(person_to_look_for);
             results[3] = Environment.TickCount - start_time;
             if (b)
                 Console.WriteLine("Found a non-existent element. Error.");
+
+            /* Searching for the first element in List<string> collection.
+             * Measuring search time.
+             */
+            person_to_look_for.Name = "Doug" + 0;
+            person_to_look_for.Last_Name = "Spaulding" + 0;
+            person_to_look_for.Birth_Date = new DateTime((long)0);
+            string string_to_look_for = person_to_look_for.ToString();
+            start_time = Environment.TickCount;
+            b = this.list_of_strings.Contains(string_to_look_for);
+            results[4] = Environment.TickCount - start_time;
+            if (!b)
+                Console.WriteLine("Could not find first element in List<string>.");
+
+            /* Searching for the central element in List<string> collection 
+             * Measuring search time.
+             */
+            person_to_look_for.Name = "Doug" + person_list.Count / 2;
+            person_to_look_for.Last_Name = "Spaulding" + person_list.Count / 2;
+            person_to_look_for.Birth_Date = new DateTime((long)(person_list.Count / 2));
+            string_to_look_for = person_to_look_for.ToString();
+            start_time = Environment.TickCount;
+            b = this.list_of_strings.Contains(string_to_look_for);
+            results[5] = Environment.TickCount - start_time;
+            if (!b)
+                Console.WriteLine("Could not find central element in person_list.");
+
+            /* Searching for the last element in List<string> collection 
+             * Measuring search time.
+             */
+            person_to_look_for.Name = "Doug" + person_list.Count;
+            person_to_look_for.Last_Name = "Spaulding" + person_list.Count;
+            person_to_look_for.Birth_Date = new DateTime((long)(person_list.Count));
+            string_to_look_for = person_to_look_for.ToString();
+            start_time = Environment.TickCount;
+            b = this.list_of_strings.Contains(string_to_look_for);
+            results[6] = Environment.TickCount - start_time;
+            if (!b)
+                Console.WriteLine("Could not find the last element in person_list.");
+
+            /* Searching for non-existent element in List<string> collection 
+             * Measuring search time.
+             */
+            person_to_look_for.Name = "Doug" + person_list.Count + 100;
+            person_to_look_for.Last_Name = "Spaulding" + person_list.Count + 100;
+            person_to_look_for.Birth_Date = new DateTime((long)(person_list.Count + 100));
+            string_to_look_for = person_to_look_for.ToString();
+            start_time = Environment.TickCount;
+            b = this.list_of_strings.Contains(string_to_look_for);
+            results[7] = Environment.TickCount - start_time;
+            if (b)
+                Console.WriteLine("Found a non-existent element in person_list. Something wrong here.");
+
+            /* Searching by key for the first element in Dictionary<Person, Student>.
+             * Measuring search time.
+             */
+            person_to_look_for.Name = "Doug" + 0;
+            person_to_look_for.Last_Name = "Spaulding" + 0;
+            person_to_look_for.Birth_Date = new DateTime((long)0);
+            start_time = Environment.TickCount;
+            b = this.person_student_dict.ContainsKey(person_to_look_for);
+            results[8] = Environment.TickCount - start_time;
+            if (!b)
+                Console.WriteLine("Could not find the first element in person_student_dict.");
 
             return results;
         }
