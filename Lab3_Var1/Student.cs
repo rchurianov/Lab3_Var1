@@ -540,6 +540,7 @@ namespace Lab3_Var1
         {
             int IComparer<Student>.Compare(Student x, Student y)
             {
+                // TODO: consider when x == null and/or y == null cases.
                 return (x.AGP).CompareTo(y.AGP);
             }
         }
