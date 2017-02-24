@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace Lab3_Var1
 {
-    public delegate System.Collection.Generic.KeyValuePair<TKey, TValue> GenerateElement<TKey, TValue>(int j);
+    public delegate System.Collections.Generic.KeyValuePair<TKey, TValue> GenerateElement<TKey, TValue>(int j);
 }

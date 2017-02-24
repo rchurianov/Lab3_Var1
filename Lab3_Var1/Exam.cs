@@ -161,7 +161,7 @@ namespace Lab3_Var1
         }
 
         /* Helper class which impements IComparer<Exam> interface.
-         * Aloows to compare two Exam objects by Exam_Date.
+         * Allows to compare two Exam objects by Exam_Date.
          */
         private class ExamDateComparer : IComparer<Exam>
         {
