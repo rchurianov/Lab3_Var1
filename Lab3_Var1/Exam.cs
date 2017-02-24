@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab3_Var1
 {
-    public class Exam : IDateAndCopy, IComparable
+    public class Exam : IDateAndCopy, IComparable, IComparer<Exam>
     {
         public Exam(string input_Exam_Name, int input_Grade, DateTime input_Exam_Date)
         {
@@ -148,6 +148,28 @@ namespace Lab3_Var1
             else
             {
                 throw new ArgumentException("Object is not exam.");
+            }
+        }
+
+        /* Compares two Exam objects by Grade.
+         * IComparer<Exam> implementation.
+         * */
+        public int Compare(Exam x, Exam y)
+        {
+            // TODO: consider x == null and/or y == null cases.
+            return x.Grade.CompareTo(y.Grade);
+        }
+
+        /* Helper class which impements IComparer<Exam> interface.
+         * Aloows to compare two Exam objects by Exam_Date.
+         */
+        private class ExamDateComparer : IComparer<Exam>
+        {
+            int IComparer<Exam>.Compare(Exam x, Exam y)
+            {
+                // TODO: consider x == null and/or y == null cases
+
+                return x.Exam_Date.CompareTo(y.Exam_Date);
             }
         }
     }
