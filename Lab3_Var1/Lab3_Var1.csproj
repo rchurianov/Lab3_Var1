@@ -44,6 +44,10 @@
     <Compile Include="Credit.cs" />
     <Compile Include="Education.cs" />
     <Compile Include="Exam.cs" />
+    <Compile Include="GenerateElementDelegate.cs" />
+    <Compile Include="GenericKeySelector.cs" />
+    <Compile Include="GenericStudentCollection.cs" />
+    <Compile Include="GenericTestCollections.cs" />
     <Compile Include="IDateAndCopy.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
