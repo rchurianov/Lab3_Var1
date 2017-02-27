@@ -163,7 +163,7 @@ namespace Lab3_Var1
         /* Helper class which impements IComparer<Exam> interface.
          * Allows to compare two Exam objects by Exam_Date.
          */
-        private class ExamDateComparer : IComparer<Exam>
+        public class ExamDateComparer : IComparer<Exam>
         {
             int IComparer<Exam>.Compare(Exam x, Exam y)
             {
