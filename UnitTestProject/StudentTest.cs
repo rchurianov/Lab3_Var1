@@ -133,5 +133,71 @@ namespace UnitTestProject
                 Console.WriteLine(crdt.ToString());
             }
         }
+
+        [TestMethod]
+        public void Test_SortExamsByName()
+        {
+            Student s = new Student();
+            s.AddExams(new Exam("Game Theory", 2, new DateTime()));
+            s.AddExams(new Exam("AAAProbability Theory", 4, new DateTime()));
+
+            foreach(Exam e in s.Exam_List)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            s.SortExamsByName();
+
+            Console.WriteLine("\n**********\n");
+
+            foreach(Exam e in s.Exam_List)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        [TestMethod]
+        public void Test_SortExamsByGrade()
+        {
+            Student s = new Student();
+            s.AddExams(new Exam("Game Theory", 2, new DateTime()));
+            s.AddExams(new Exam("AAAProbability Theory", 4, new DateTime()));
+
+            foreach (Exam e in s.Exam_List)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            s.SortExamsByGrade();
+
+            Console.WriteLine("\n**********\n");
+
+            foreach (Exam e in s.Exam_List)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+
+        [TestMethod]
+        public void Test_SortExamsByDate()
+        {
+            Student s = new Student();
+            s.AddExams(new Exam("Game Theory", 2, new DateTime(2001, 1, 1)));
+            s.AddExams(new Exam("AAAProbability Theory", 4, new DateTime(2000, 7, 16)));
+
+            foreach (Exam e in s.Exam_List)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            s.SortExamsByDate();
+
+            Console.WriteLine("\n**********\n");
+
+            foreach (Exam e in s.Exam_List)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
     }
 }

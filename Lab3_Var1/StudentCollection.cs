@@ -138,7 +138,7 @@ namespace Lab3_Var1
         /* Method to compare to Student objects. Because in this case the
          * task requires to use IComparable implementation from Person class
          * I had to use IComparable as parameter's type. Person is the base class
-         * for Student. CompareStudentsByLastName satiafies requiremets of
+         * for Student. CompareStudentsByLastName satisfies requiremets of
          * `int Compare(T, T)` delegate.
          */
         private int CompareStudentsByLastName(IComparable x, IComparable y)
