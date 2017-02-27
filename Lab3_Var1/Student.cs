@@ -557,5 +557,31 @@ namespace Lab3_Var1
              */
             return new StudentEnumerator(this);
         }
+
+        /* Method for sorting List<Exam> by Exam_Name */
+        public void SortExamsByName()
+        {
+            /* As long as Exam implements IComparable,
+             * Exam.CompareTo method will be used by List.Sort()
+             * as a default comparer.
+             */
+            this.exam_list.Sort();
+        }
+
+        /* Method for sorting List<Exam> by Grade */
+        public void SortExamsByGrade()
+        {
+            this.exam_list.Sort(delegate(Exam x, Exam y)
+                                {
+                                    return x.Compare(x, y);
+                                });
+        }
+
+        /* Method for sorting List<Exam> by Date */
+        public void SortExamsByDate()
+        {
+            Exam.ExamDateComparer edc = new Exam.ExamDateComparer();
+            this.exam_list.Sort(edc);
+        }
     }
 }
