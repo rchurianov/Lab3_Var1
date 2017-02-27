@@ -118,7 +118,7 @@ namespace Lab3_Var1
                 this.students = new Dictionary<TKey, Student>();
             for (int i = 0; i < 5; i++)
             {
-                Student stud = new Student();
+                Student stud = new Student(new Person("Polyekt " + i, "Polyektovich " + i, new DateTime()), Education.Bachelor, 123+i);
                 TKey key = key_selector_method(stud);
                 students.Add(key, stud);
             }
@@ -156,7 +156,7 @@ namespace Lab3_Var1
             {
                 s += stud.ToShortString() + "\n" +
                     "Number of credits: " + stud.Credit_List.Count + "\n" +
-                    "Number of exams: " + stud.Exam_List.Count + "\n";
+                    "Number of exams: " + stud.Exam_List.Count + "\n\n";
             }
             return s;
         }
