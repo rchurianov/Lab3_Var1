@@ -56,6 +56,7 @@
     <Compile Include="StudentTest.cs" />
     <Compile Include="TestCollections_Test.cs" />
     <Compile Include="TestGenericStudentCollection.cs" />
+    <Compile Include="Test_GenericTestCollections.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lab3_Var1\Lab3_Var1.csproj">
