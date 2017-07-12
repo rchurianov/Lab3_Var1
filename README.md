@@ -14,6 +14,4 @@ The application executes the following list of tasks:
 * Creates `TestCollections` object. Searches for the first, middle, last and an abcent element
 in collections of the `TestCollection` object. Prints search times.
 
-------------------------------------------------------------------------------------------------------------------
-
-In the following section the details of classes `Student`, `Person`, `TestCollections` are outlined.
+-----------------------------------------------------------------------------------------------------------------
