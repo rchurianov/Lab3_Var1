@@ -13,5 +13,14 @@ The application executes the following list of tasks:
 * Prints groups of Students by their AGP.
 * Creates `TestCollections` object. Searches for the first, middle, last and an abcent element
 in collections of the `TestCollection` object. Prints search times.
+* Creates a `StudentCollection<string>` object. Adds several `Student` objects to collection and prints the collection.
+
+// MODIFY for extended variant
 
 -----------------------------------------------------------------------------------------------------------------
+
+As required by the task the universal delegate is defined:
+
+```
+delegate System.Collections.Generic.KeyValuePair<TKey, TValue> GenerateElement<TKey, TValue>(int j);
+```
